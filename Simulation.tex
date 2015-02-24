@@ -1,1 +1,32 @@
-\section{Simulation}
+\section{Initialization}
+After choosing the density, the particles are placed in a fcc bravais lattice structure.
+
+[[init velocity]]
+
+Lennard-Jones pair potential:
+\begin{gather*}
+    U(r) = 4\epsilon\left[\left(\frac{\sigma}{r}\right)^{12}-\left(\frac{\sigma}{r}\right)^6\right].
+\end{gather*}
+The specific heat is determined using Lebowitz's formula \cite{cite:jos}
+\begin{gather*}
+    \frac{\langle \delta K^2\rangle}{\langle K\rangle^2}=\frac{2}{3N}\left( 1-\frac{3N}{2C_v}\right).
+\end{gather*}
+From the virial equation the pressure is determined 
+\begin{gather*}
+    P = nk_BT + \frac{1}{3V}\Big \langle \sum_{ij} r_{ij}F(r_{ij})\Big \rangle + \frac{2\pi N^2}{3V^2}\int_{r_{\text{cut-off}}}^{\infty}r^3 F(r) \text{d}r
+\end{gather*}
+Scaling factor $\lambda$:
+\begin{gather}\label{eq:rescale}
+    \lambda=\sqrt{\frac{(N-1)3k_BT_D}{\sum_{i=1}^{N} mv_i^{2}}}.
+\end{gather}
+Correlation length:
+\begin{gather*}
+    g(r)=\frac{2V}{N(N-1)}\left(\frac{\langle n(r)\rangle}{4\pi r^2\Delta r}\right).
+\end{gather*}
+
+\section{Time evolution}
+[[velocity verlet]]
+
+\section{Equilibrium}
+A simulation for 108 particles was run, figure %\ref{fig:instant_temp}
+shows the instantaneous temperature as a function of time steps. The desired temperature was set to 300~K. The temperature fluctuates a lot at the start of the simulation, since the system is far from equilibrium. After around 1000 time steps the system appears to reach equilibrium and the temperature fluctuates around $T_D$. During the equilibration phase the particle velocity is rescaled at intervals of 200 time steps, with the rescaling factor from Eq. \ref{eq:rescale}. Now that the systme is in equilibrium, physical 
