@@ -1,0 +1,21 @@
+\input{Preamble2.tex}
+
+\begin{document}
+    \maketitle
+    \thispagestyle{fancy}
+    
+    \input{abstract.tex}
+    
+   \begin{multicols}{2}
+        \input{Introduction.tex}
+        \input{Theory.tex}
+        \input{Simulation.tex}
+        \input{Conclusion.tex}
+        
+       % \bibliography{library}{}
+       % \bibliographystyle{unsrt}
+        
+        \appendix
+        \input{Appendices.tex}
+     \end{multicols}
+\end{document}
