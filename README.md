@@ -1,1 +1,2 @@
-# Finite element methods computer assignment -report
+# ICCP MD project report
+compile main.tex
