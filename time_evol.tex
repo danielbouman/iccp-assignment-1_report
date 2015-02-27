@@ -1,4 +1,3 @@
 \section{Time evolution}
-The numerical time integration of the equations of motion for the system is done by a Velocity Verlet algorithm. The Velocity Verlet algorithm was chosen for its simplicity of implementation, relative low error order (locally $\mathcal{O}(h^4)$ and globally $\mathcal{O}(h^4)$) and ease of having the velocity and position at each timestep (unlike the leapfrog method).
-
-Every time
+The numerical time integration of the equations of motion for the system is done by a Velocity Verlet algorithm. The Velocity Verlet algorithm was chosen for its simplicity of implementation, relative low error order (locally $\mathcal{O}(h^2)$ and globally $\mathcal{O}(h^4)$) and ease of having the velocity and position at each timestep (unlike the leapfrog method).
+After each update of the position in the algorithm, each particle position is checked for whether or not it falls out of the box. If so, those particles are translated according to the periodic boundary conditions. For the calculation of the force, it is important that the force is only calculated between the shortest distance between two particles. During the calculation of the force, the potential energy between two particles is also calculated as to keep track of the total potential energy of the system.
