@@ -1,19 +1,19 @@
 \section{Physical quantities}
-The relevant physical quantities that were simulated consist of the kinetic energy, potential energy, total energy, specific heat, pressure, correlation function, temperature and diffusion constant. Since the system is a microcanonical ensemble, the specific heat cannot be calculated from the, in theory, non-existing fluctuations in the total energy\cite{jos}. Using a formula found by Lebowitz \cite{lebowitz1967ensemble} allows us to calculate the specific heat in terms of the fluctuations in the kinetic energy instead:
+The relevant physical quantities that were determined from the simulatons are: kinetic energy, potential energy, total energy, specific heat, pressure, correlation function, temperature and diffusion constant. Since the system is a microcanonical ensemble, the specific heat cannot be calculated from the, in theory, non-existing fluctuations in the total energy\cite{jos}. Using a formula found by Lebowitz \cite{lebowitz1967ensemble}, the specific heat can instead be calculated from the fluctuations in the kinetic energy:
 \begin{gather*}
     \frac{\langle \delta K^2\rangle}{\langle K\rangle^2}=\frac{2}{3N}\left( 1-\frac{3N}{2C_v}\right).
 \end{gather*}
 
-The pressure can be determined by a virial expansion with an additional correction if a cutoff length $r_c$ is used:
+The pressure can be determined by a virial expansion with an additional correction for a possible cutoff length $r_c$:
 \begin{gather*}
-    P = nk_BT + \frac{1}{3V}\Big \langle \sum_{ij} r_{ij}F(r_{ij})\Big \rangle + \frac{2\pi N^2}{3V^2}\int_{r_{\text{cut-off}}}^{\infty}r^3 F(r) \text{d}r
+    P = nk_BT + \frac{1}{3V}\Big \langle \sum_{ij} r_{ij}F(r_{ij})\Big \rangle + \frac{2\pi N^2}{3V^2}\int_{r_{\text{cut-off}}}^{\infty}r^3 F(r) \text{d}r.
 \end{gather*}
 
 In the simulations performed $r_c \gg L$, so that the standard virial expansion can be used.
 
 The correlation length can be written as
 \begin{gather*}
-    g(r)=\frac{2V}{N(N-1)}\left[\frac{\langle n(r)\rangle}{4\pi r^2\Delta r}\right]
+    g(r)=\frac{2V}{N(N-1)}\left[\frac{\langle n(r)\rangle}{4\pi r^2\Delta r}\right],
 \end{gather*}
 where $n(r)$ is the number of pairs with a separation between $r$ and $r + \mathrm{d}r$. Obviously, we have to cope with a finite $\Delta r$ instead of the infinitesimal $\mathrm{d}r$ for our simulation. During each time step the distance between each particle pair is calculated. These are then saved to a histogram with 1000 bins of equal width $\Delta r$ running from $r = 0$ to $r = \frac{\sqrt{3}}{2}L$, the maximum distance possible between two particles. From the histograms the expectation value in time of $n(r)$ can be extracted. The correlation function found in this manner will however drop off after a certain length, due to periodic boundary conditions. For large $r$ the normalized correlation function should however approach 1.
 
