@@ -1,7 +1,8 @@
 \section{Results and discussion}
-For several values of $T_d$ and $\rho$ the simulation has been run for 108 particles for 5000 timesteps, with each timestep being 0.004 $\tau$ ($=\sqrt{\frac{m\sigma^2}{\epsilon}}$). A check for the accuracy and stability of the algorithm can be performed by verifying how constant the total energy remains. For all simulations the variance in the energy was found to be negligible.
-Table \ref{table:phys_quan} shows the averaged physical quantities. Table \ref{table:variance} shows the variance of the physical quantities. The table corresponds to the gas phase, three liquid phases, a triple point (coexistence of all three phases) and the solid phase.
+For several values of $T_d$ and $\rho$ the simulation has been run for $N = 4 \cdot 3^3 = 108$ particles for 5000 timesteps, with each timestep being 0.004 $\tau$ ($=\sqrt{\frac{m\sigma^2}{\epsilon}}$). A check for the accuracy and stability of the algorithm can be performed by verifying how constant the total energy remains. For all simulations the variance in the energy was found to be negligible.
+Table \ref{table:phys_quan} shows the averaged physical quantities. Table \ref{table:variance} shows the variance of the physical quantities. The tables correspond to the gas phase, three liquid phases, a triple point (coexistence of all three phases) and the solid phase respectively.
 \begin{center}
+\centerfloat
 \captionof{table}{Average physical quantities, in equilibrium phase.}
 \begin{tabular}{lllllll}
 \hline \hline
@@ -20,9 +21,29 @@ $\rho(1/\sigma^3)$ & $T_d$ & $T$ & $\beta P/\rho$ & $U(\epsilon)$ & $C_v$\\
 \label{table:phys_quan}
 \end{center}
 
-The temperature approximates $T_d$ very well with relativily small variance, see figure \ref{fig:Inst_temp}. The potential energy corresponds well for the liquid phase with previously simulated results. There are significant differences between the pressure, expressed in $\beta P/\rho$, and previously found simulated results \cite{jos}. For the liquid phases of argon the relative fluctuations in the pressure are also considerably larger than the relative fluctuations for the gas and solid phases, see figure \ref{fig:Inst_pressure}. The specific heat per particle for the gas phase can be compared with that of an ideal gas.  For the ideal gas $c_v = 3k_b/T = 1$. The difference between the found result and the ideal gas specific heat can be attributed to the added increase in (potential) energy when the temperature is increased. For the solid phase an approximation of the expected specific heat is given by the Dulong-Petit law, $c_v = 3k_bT =  6$. The lower simulated result could be partially attributed to the fact that in comparison with an Einstein solid, the potential doesn't increase as fast when two particles move apart. The fluctuations in the specific heat were quite erratic for the liquid and solid phases. A comparison between the specific heat during each timestep between liquid ($\rho = 0.8, T = 1$) and gaseous ($\rho = 0.3, T = 3$) argon can be seen in figure \ref{fig:specific_heat}.
 
-The simulation of the diffusion constant failed, since the variance was twice the order of magnitude of the mean. Large peaks were found in the simulation during the calculation of the diffusion constant. 
+\begin{center}
+\centerfloat
+\captionof{table}{Variance of physical quantities in equilibrium}
+\begin{tabular}{lllllll}
+\hline \hline
+$\rho(1/\sigma^3)$ & $T_d$ & $\Delta T$ & $\Delta (\beta P/\rho)$ & $\Delta U(\epsilon)$ & $\Delta C_v$ \\
+\hline
+0.30 & 3.000 & 0.005 & 0.058 & 0.013 & 0.006\\
+0.70 & 1.000 & 0.002 & 0.164 & 0.013 & 0.843\\
+0.80 & 1.000 & 0.002 & 0.238 & 0.016 & 0.822\\
+0.88& 1.000 & 0.002 & 0.293 & 0.018 & 76.10\\
+1.06& 0.827& 0.002 & 0.543 & 0.004 & 1425.6\\
+1.20 & 0.500 & 0.001 & 3.460 & 0.020 & 14184\\
+\hline \hline
+\end{tabular}
+\vspace{-0.1cm}
+\captionof*{table}{Variance in the calculated physical quantities during the simulations.}
+\label{table:variance}
+\end{center}
+The temperature approximates $T_d$ very well with relativily small variance, see figure \ref{fig:Inst_temp}. The potential energy corresponds well for the liquid phase with previously simulated results. There are significant differences between the pressure, expressed in $\beta P/\rho$, for liquid and previously found simulated results \cite{jos}. For the liquid phases of argon the relative fluctuations in the pressure are also considerably larger than the relative fluctuations for the gas and solid phase, see figure \ref{fig:Inst_pressure}. The specific heat per particle for the gas phase can be compared with that of an ideal gas.  For the ideal gas $c_v = 3k_b/T = 1$. The difference between the found result and the ideal gas specific heat can be attributed to the added increase in (potential) energy when the temperature is increased. For the solid phase an approximation of the expected specific heat is given by the Dulong-Petit law, $c_v = 3k_bT =  6$. The lower simulated result could be partially attributed to the fact that in comparison with an Einstein solid, the potential doesn't increase as fast when two particles move apart. The fluctuations in the specific heat were quite erratic for the liquid and solid phases. A comparison between the specific heat during each timestep between liquid ($\rho = 0.8, T = 1$) and gaseous ($\rho = 0.3, T = 3$) argon can be seen in figure \ref{fig:specific_heat}.
+
+The simulation of the diffusion constant failed, since the variance was twice the order of magnitude of the mean. Large, small peaks were found in the simulation during the calculation of the diffusion constant. 
 
 
 \subsection{Correlation function}
@@ -46,22 +67,5 @@ The simulated unrenormalized correlation functions found in figure \ref{fig:Corr
 % 1.2     0.5 
 
 
-\begin{center}
-\captionof{table}{Variance of physical quantities, in equilibrium phase.}
-\begin{tabular}{lllllll}
-\hline \hline
-$\rho(1/\sigma^3)$ & $T_d$ & $\Delta T$ & $\Delta (\beta P/\rho)$ & $\Delta U(\epsilon)$ & $\Delta C_v$ \\
-\hline
-0.30 & 3.0 & 3.030 & 1.14 & -1.721 & 1.61\\
-0.70 & 1.0 & 0.976 & 0.197 & -4.720 & 1.95\\
-0.80 & 1.0 & 1.023 & 1.841 & -5.274 & 2.11\\
-0.88& 1.0 & 0.967 & 3.258 & -5.756 & 2.13\\
-1.06& 0.827&0.848 & 7.131 & -6.976 & 3.68\\
-1.20 & 0.5 & 0.501 & 27.86 & -6.923 & 4.85\\
-\hline \hline
-\end{tabular}
-\vspace{-0.1cm}
-\captionof*{table}{[[caption]]}
-\label{table:variance}
-\end{center}
+
 
